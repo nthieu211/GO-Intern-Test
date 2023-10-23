@@ -15,3 +15,5 @@ RUN pip3 install pipenv && pipenv install --system && pip3 install -r requiremen
 # Copy project
 COPY .env /app/
 COPY . /app/
+
+CMD ["python", "manage.py", "loaddata", "./data/product.json"]
