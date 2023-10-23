@@ -3,7 +3,14 @@ services:
   # Django web application service
   web:
     build: .
-    command: ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+    command:
+      - [
+          "python3",
+          "manage.py",
+          "loaddata",
+          "./data/product.json"
+        ]
+      - [ "python3", "manage.py", "runserver", "0.0.0.0:8000" ]
     volumes:
       - .:/app
     ports:
@@ -11,7 +18,7 @@ services:
     depends_on:
       - db
     env_file:
-            - .env
+      - .env
 
   # MySQL service
   db:
@@ -24,4 +31,3 @@ services:
       - "3306:3306"
     env_file:
       - .env
-
