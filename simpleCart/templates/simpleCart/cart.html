@@ -1,0 +1,46 @@
+{% load static %}
+{% block content %}
+
+{% if items %}
+
+<div>
+	<div>
+		{% for cart_item in items %}
+		<div id="div{{cart_item.product.id}}" class="cart__item">
+			<div class="cart__item-left">
+				<div class="cart__item__image" style="background-color: {{cart_item.product.color}};">
+					<div class="cart__item-block">
+						<img src="{{cart_item.product.image}}" alt="{{cart_item.product.name}}">
+					</div>
+				</div>
+			</div>
+			<div class="cart__item-right">
+				<div class="cart__item__name">{{cart_item.product.name}}</div>
+				<div class="cart__item__price">${{cart_item.get_total}}</div>
+				<div class="cart__item-action">
+					<div class="cart__item__count">
+						<div data-product="{{cart_item.product.id}}" data-action="subtract"
+							class="cart__item__count__button update-cart">-</div>
+						<div data-product="{{cart_item.product.id}}" class="cart__item__count__number">
+							{{cart_item.quantity}}</div>
+						<div data-product="{{cart_item.product.id}}" data-action="add"
+							class="cart__item__count__button update-cart">+</div>
+					</div>
+					<div data-product="{{cart_item.product.id}}" data-action="remove"
+						class="cart__item__remove update-cart">
+						<img src="{% static 'assets/trash.png' %}">
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% else %}
+<div class="card__empty">
+	<p class="card__empty__text">Your cart is empty.</p>
+</div>
+
+{% endif %}
+
+{% endblock %}

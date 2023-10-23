@@ -1,0 +1,32 @@
+{% load static %}
+{% block content %}
+
+{% if products %}
+{% for product in products %}
+<div class="product" id="product-{{product.id}}">
+	<div class="product__image" style="background-color: {{product.color}};">
+		<img src="{{product.image}}" alt="{{product.name}}">
+	</div>
+	<div class="product__name">{{product.name}}</div>
+	<div class="product__description">{{product.description}}</div>
+	<div class="product-bottom">
+		<div class="product__price">
+			${{product.price}}
+		</div>
+		{% if product.id in id_in_cart %}
+		<div data-product={{product.id}} class="product__button-mark">
+			<img src="{% static 'assets/check.png' %}" style="width: 16px;" alt="Check Mark Icon">
+		</div>
+		{% else %}
+		<div data-product={{product.id}} data-action="add" class="product__button update-cart">
+			ADD TO CART
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endfor %}
+{% else %}
+<p>No product found</p>
+{% endif %}
+
+{% endblock %}

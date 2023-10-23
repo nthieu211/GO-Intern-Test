@@ -1,0 +1,36 @@
+{% extends 'simpleCart/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="main__containter">
+	<div id="store">
+		<div class="card">
+			<div class="card__top">
+				<img src="{% static 'assets/nike.png' %}" alt="nike" class="card__top__logo">
+				<div class="card__top__title">Our Products</div>
+			</div>
+			<div class="card__body">
+				<!-- loading items -->
+				{% include 'simpleCart/product.html' %}
+			</div>
+		</div>
+	</div>
+
+	<div id="cart">
+		<div class="card">
+			<div class="card__top">
+				<img src="{% static 'assets/nike.png' %}" alt="nike" class="card__top__logo">
+				<div class="card__top__title">
+					Your Cart
+					<span class="card__title__amount">${{order.get_cart_total}}</span>
+				</div>
+			</div>
+			<div class="card__body">
+				{% include 'simpleCart/cart.html' %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
