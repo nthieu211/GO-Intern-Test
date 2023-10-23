@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = "django-insecure-us+fb=xuw^d4068%$0)!csbh#)ikp(&-wg3!ucx03$%9&gme$y"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,12 +81,12 @@ WSGI_APPLICATION = "GSneaker.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get("DATABASE_ENGINE"),
-        "NAME": os.environ.get("MYSQL_DATABASE", "gsneaker"),
-        "USER": os.environ.get("MYSQL_USER", "root"),
-        "PASSWORD": os.environ.get("MYSQL_PASSWORD", "123456789"),
-        "HOST": os.environ.get("MYSQL_DATABASE_HOST", "localhost"),
-        "PORT": os.environ.get("MYSQL_DATABASE_PORT", 3306),
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "gsneaker",
+        "USER": "root",
+        "PASSWORD": "123456789",
+        "HOST": "localhost",
+        "PORT": "3306",
     }
 }
 

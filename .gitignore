@@ -1,0 +1,4 @@
+env/*
+GSneaker/__pycache__/*
+simpleCart/__pycache__/*
+migrations/__pycache__/*
