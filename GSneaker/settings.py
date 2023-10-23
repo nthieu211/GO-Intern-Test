@@ -82,14 +82,11 @@ WSGI_APPLICATION = "GSneaker.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": os.environ.get("DATABASE_ENGINE"),
-        "NAME": os.environ.get("DATABASE_NAME"),
-        "USER": os.environ.get("DATABASE_USER"),
-        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
-        "HOST": os.environ.get("DATABASE_HOST"),
-        "PORT": os.environ.get("DATABASE_PORT"),
-        "OPTIONS": {
-            "sql_mode": "traditional",
-        },
+        "NAME": os.environ.get("MYSQL_DATABASE", "mysql-db"),
+        "USER": os.environ.get("MYSQL_USER", "mysql-user"),
+        "PASSWORD": os.environ.get("MYSQL_PASSWORD", "mysql-password"),
+        "HOST": os.environ.get("MYSQL_DATABASE_HOST", "db"),
+        "PORT": os.environ.get("MYSQL_DATABASE_PORT", 3306),
     }
 }
 
@@ -116,9 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE")
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = os.environ.get("TIME_ZONE")
+TIME_ZONE = "Asia/Ho_Chi_Minh"
 
 USE_I18N = True
 
