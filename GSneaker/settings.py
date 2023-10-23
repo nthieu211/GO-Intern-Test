@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "gotest.nth.id.vn",
     "127.0.0.1",
+    "localhost",
 ]
 
 
