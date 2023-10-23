@@ -47,7 +47,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -82,12 +81,12 @@ WSGI_APPLICATION = "GSneaker.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "ENGINE": "django.db.backends.mysql",
         "NAME": "gsneaker",
-        "USER": "myuser",
+        "USER": "root",
         "PASSWORD": "123456789",
         "HOST": "localhost",
-        "PORT": "5432",
+        "PORT": "3306",
     }
 }
 
@@ -126,24 +125,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, "staticfiles")
-
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-import dj_database_url
-
-prod_db = dj_database_url.config(conn_max_age=500)
-DATABASES["default"].update(prod_db)
